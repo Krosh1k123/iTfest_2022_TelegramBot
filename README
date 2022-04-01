@@ -19,7 +19,7 @@ from bs4 import BeautifulSoup
 import requests
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.84 Safari/537.36'} #Импровизация того, что мы заходим через пользователя
 url = 'https://vk.com/v_anime_popady' #ссылка на сайт
-site = requests.get(url, headers = headers) #Проверка работы сайта (если код 200 - вс1 работает)
+site = requests.get(url, headers = headers) #Проверка работы сайта (если код 200 - все работает)
 
 soup = BeautifulSoup(site.text, 'html.parser') # Получение html-кода страницы
 
