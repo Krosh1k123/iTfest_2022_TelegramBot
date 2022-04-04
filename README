@@ -15,3 +15,22 @@
  в) После выбора ниш бот начинает рассылку по заданным нишамкаждые 3 минуты
 2) Код:
  а) Парсер вк постов +
+ б) База данных
+   Часть кода:
+   
+import sqlite3
+
+connection = sqlite3.connect('url.db') #Подключаем базу данных
+cursor = connection.cursor()
+cursor.execute("""CREATE TABLE IF NOT EXISTS meme(
+	url TEXT)""") #Создаём таблицу с url
+
+url = ['vk.com/razezxc',
+	'vk.com/krosh1k_exe',
+	'vk.com/burgerking',
+	'vk.com/sciencemem']
+
+for i in range(len(url)):
+	if cursor.execute("SELECT url FROM meme WHERE url = '{}'".format(url[i])).fetchone() is None:
+		cursor.execute("INSERT INTO meme VALUES ('{}')".format(url[i])) #Заполняем таблицу ссылками
+connection.commit() #Подтверждаем наше действие(Чтобы данные в таблице сохранились)
